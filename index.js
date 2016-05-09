@@ -16,12 +16,12 @@ module.exports = {
     this.setState({
       componentWidth: ReactDOM.findDOMNode(this).getBoundingClientRect().width
     });
-    elementResizeEvent(ReactDOM.findDOMNode(this), this.onResize);
+    elementResizeEvent(ReactDOM.findDOMNode(this), this.onResize.bind(this));
   },
   // When the DOM updates, check that our resize sensor is still there.
   componentDidUpdate: function() {
     if (0 === ReactDOM.findDOMNode(this).getElementsByClassName('resize-sensor').length) {
-      elementResizeEvent(ReactDOM.findDOMNode(this), this.onResize);
+      elementResizeEvent(ReactDOM.findDOMNode(this), this.onResize.bind(this));
     }
   },
   onResize: function() {
